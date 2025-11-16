@@ -69,20 +69,51 @@ console.log(capitalizarPalabras("hola mundo desde javascript"));
 /* Imprimir sucesion fibonacci */
 
 function fibonacci(largo){
-    if largo == 0 return "Resultado: []"
-    let numeros = []
-    numeros.push(0)
-    
-    if (largo == 1) {
-        return "Resultado: [" + numeros[0] + "]"
-    }
-    
-    if (largo == 2) {
-        return "Resultado: [" + numeros[0] + "]"
-    }
-    
-    for (let i = 1; i<=largo; i++){
-        numeros.push(
+    if (largo <= 0) return []
+    if (largo == 1) return [0]
 
-        
+    let numeros = [0, 1]
 
+    for (let i = 2; i < numeros; i++) {
+        numeros.push(numeros[i - 1] + numeros[i - 2])
+    }
+
+    return numeros;
+}
+console.log("Resultado: [" + fibonacci(5) + "]") 
+
+/* 8- Actividades con arreglo de productos */
+
+const productos = [
+  { id: 1, nombre: 'Laptop', precio: 1200, stock: 15, categoria: 'electrónica' },
+  { id: 2, nombre: 'Mouse', precio: 25, stock: 50, categoria: 'electrónica' },
+  { id: 3, nombre: 'Teclado', precio: 45, stock: 30, categoria: 'electrónica' },
+  { id: 4, nombre: 'Monitor', precio: 300, stock: 20, categoria: 'electrónica' },
+  { id: 5, nombre: 'Libro', precio: 15, stock: 100, categoria: 'libros' }
+];
+
+// 1. forEach: Mostrar nombre + precio
+productos.forEach(producto => {
+  console.log(`Producto: ${producto.nombre}, Precio: $${producto.precio}`);
+});
+
+// 2. map: Array solo con nombres
+let nombres = productos.map(producto => producto.nombre);
+console.log(nombres); 
+
+// 3. filter: Electrónicos con stock > 20
+let electronicosStock = productos.filter(
+  p => p.categoria == 'electrónica' && p.stock > 20
+);
+console.log(electronicosStock);
+
+// 4. find: Producto con id = 3
+let producto = productos.find(p => p.id === 3);
+console.log(producto);
+
+// 5. reduce: Valor total del inventario
+let valorTotal = productos.reduce(
+  (total, p) => total + p.precio * p.stock,
+  0
+);
+console.log(valorTotal);
