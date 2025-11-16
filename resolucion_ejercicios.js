@@ -117,3 +117,45 @@ let valorTotal = productos.reduce(
   0
 );
 console.log(valorTotal);
+
+/* 9- Ejecrcicios con arreglo de estudiantes */
+
+const estudiantes = [
+  { id: 1, nombre: 'Ana', edad: 20, calificaciones: [8, 9, 7, 8] },
+  { id: 2, nombre: 'Carlos', edad: 22, calificaciones: [6, 7, 8, 7] },
+  { id: 3, nombre: 'María', edad: 21, calificaciones: [9, 9, 8, 10] },
+  { id: 4, nombre: 'Juan', edad: 19, calificaciones: [7, 6, 5, 8] }
+];
+
+// Función para promedio
+let promedio = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+// 1. forEach: Mostrar nombre + edad
+estudiantes.forEach(e => {
+  console.log(`Nombre: ${e.nombre}, Edad: ${e.edad}`);
+});
+
+// 2. map: Array con nombre y promedio
+let promedios = estudiantes.map(e => ({
+  nombre: e.nombre,
+  promedio: promedio(e.calificaciones)
+}));
+console.log(promedios);
+
+// 3. filter: Estudiantes con promedio > 7.5
+let sobresalientes = estudiantes.filter(
+  e => promedio(e.calificaciones) > 7.5
+);
+console.log(sobresalientes);
+
+// 4. find: Estudiante llamado "María"
+let estudiante = estudiantes.find(e => e.nombre === "María");
+console.log(estudiante);
+
+// 5. reduce: Edad promedio del grupo
+let edadPromedio = estudiantes.reduce(
+  (acc, e) => acc + e.edad,
+  0
+) / estudiantes.length;
+console.log(edadPromedio);
+
