@@ -159,3 +159,38 @@ let edadPromedio = estudiantes.reduce(
 ) / estudiantes.length;
 console.log(edadPromedio);
 
+/* 10- Ejercicios con peliculas */
+
+const peliculas = [
+  { id: 1, titulo: 'El Padrino', año: 1972, duracion: 175, genero: 'drama', rating: 9.2 },
+  { id: 2, titulo: 'Pulp Fiction', año: 1994, duracion: 154, genero: 'crimen', rating: 8.9 },
+  { id: 3, titulo: 'El Señor de los Anillos', año: 2001, duracion: 178, genero: 'fantasía', rating: 8.8 },
+  { id: 4, titulo: 'Interestelar', año: 2014, duracion: 169, genero: 'ciencia ficción', rating: 8.6 },
+  { id: 5, titulo: 'Parásitos', año: 2019, duracion: 132, genero: 'drama', rating: 8.6 }
+];
+
+// 1. forEach: Mostrar título + año
+peliculas.forEach(p => {
+  console.log(`Título: ${p.titulo}, Año: ${p.año}`);
+});
+
+// 2. map: Array de títulos en mayúsculas
+let titulos = peliculas.map(p => p.titulo.toUpperCase());
+console.log(titulos);
+
+// 3. filter: Películas de drama con rating > 8.5
+let drama = peliculas.filter(
+  p => p.genero === 'drama' && p.rating > 8.5
+);
+console.log(drama);
+
+// 4. find: Película de 2014
+let pelicula = peliculas.find(p => p.año === 2014);
+console.log(pelicula);
+
+// 5. reduce: Duración total
+let duracionTotal = peliculas.reduce(
+  (acc, p) => acc + p.duracion,
+  0
+);
+console.log(duracionTotal);
